@@ -34,8 +34,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+
+//    implementation(files("libs/aar/GbcAw.aar"))
+    implementation(fileTree(mapOf("dir" to "libs/aar", "include" to "*.aar")))
     implementation(project(":lib"))
     implementation(project(":nativelib"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
