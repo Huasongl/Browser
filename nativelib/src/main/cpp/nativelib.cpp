@@ -15,11 +15,15 @@ Java_com_example_nativelib_NativeLib_stringFromJNI(
     return env->NewStringUTF(hello.c_str());
 }
 
-void DynamicJavaMethod01(JNIEnv *env, jobject j_object) {
-    LOGI("C++ DynamicJavaMethod01")
+extern "C" {
+    extern int get();
 }
 
-void *DynamicJavaMethod02(JNIEnv *env, jobject j_object, std::string string) {
+void DynamicJavaMethod01(JNIEnv *env, jobject j_object) {
+    LOGI("C++ DynamicJavaMethod01: %d\n ", get())
+}
+
+jint *DynamicJavaMethod02(JNIEnv *env, jobject j_object, jstring j_string) {
     LOGI("C++ DynamicJavaMethod02")
     return 0;
 }

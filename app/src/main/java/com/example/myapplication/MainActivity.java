@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Log.i(TAG, "dynamicJavaMethod01");
-//                nativeLib.dynamicJavaMethod01();
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setComponent(new ComponentName("com.flyme.auto.browser", "com.android.browser.BrowserActivity"));
-                intent.setData(Uri.parse("mzbrowser://com.flyme.auto.browser/?url=https://www.baidu.com"));
-                startActivity(intent);
+                nativeLib.dynamicJavaMethod01();
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_VIEW);
+//                intent.setComponent(new ComponentName("com.flyme.auto.browser", "com.android.browser.BrowserActivity"));
+//                intent.setData(Uri.parse("mzbrowser://com.flyme.auto.browser/?url=https://www.baidu.com"));
+//                startActivity(intent);
             }
         });
 

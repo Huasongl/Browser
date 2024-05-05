@@ -28,10 +28,23 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
         nativelib.cpp)
 
+#静态库依赖
+add_library(ndkstudy STATIC IMPORTED)
+set_target_properties(ndkstudy PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libndkstudy.a)
+
+#动态库依赖
+#add_library(ndkstudy SHARED IMPORTED)
+#set_target_properties(ndkstudy PROPERTIES IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/libndkstudy.so)
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}" -L${CMAKE_SOURCE_DIR}/../jniLibs/${CMAKE_ANDROID_ARCH_ABI})
+
 # Specifies libraries CMake should link to your target library. You
 # can link libraries from various origins, such as libraries defined in this
 # build script, prebuilt third-party libraries, or Android system libraries.
 target_link_libraries(${CMAKE_PROJECT_NAME}
         # List libraries link to the target library
         android
-        log)
+        log
+#        静态库
+        ndkstudy)
+#        动态库
+#        ${CMAKE_SOURCE_DIR}/libndkstudy.a)

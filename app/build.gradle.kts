@@ -14,6 +14,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters.addAll(listOf("arm64-v8a"))
+        }
     }
 
     buildTypes {
@@ -34,8 +38,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-
+//    直接依赖
 //    implementation(files("libs/aar/GbcAw.aar"))
+//    批量依赖
     implementation(fileTree(mapOf("dir" to "libs/aar", "include" to "*.aar")))
     implementation(project(":lib"))
     implementation(project(":nativelib"))
