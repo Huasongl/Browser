@@ -2,10 +2,16 @@ package com.example.nativelib;
 
 public class NativeLib {
 
+    private static final String TAG = "NativeLib";
+    private static final NativeLib nativeLib = new NativeLib();
+
     // Used to load the 'nativelib' library on application startup.
     static {
         System.loadLibrary("nativelib");
-        System.out.println("zyh");
+    }
+
+    public static NativeLib getInstance() {
+        return nativeLib;
     }
 
     /**
@@ -15,5 +21,8 @@ public class NativeLib {
     public native String stringFromJNI();
 
     public native void dynamicJavaMethod01();
+
     public native int dynamicJavaMethod02(String string);
+
+    public native int getNdkStudySoNumber();
 }

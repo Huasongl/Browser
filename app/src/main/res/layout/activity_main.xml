@@ -38,4 +38,10 @@
         android:layout_height="wrap_content"
         android:text="转跳到下一个组件，必须是同一次运行时操作" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="动态库调用事件一" />
+
 </LinearLayout>
