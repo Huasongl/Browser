@@ -1,7 +1,12 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 
@@ -40,7 +45,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.button_1) {
             Log.i(TAG, NativeLib.getInstance().stringFromJNI());
         } else if (v.getId() == R.id.button_6) {
-            Log.i(TAG, "getNdkStudySoNumber: " + NativeLib.getInstance().getNdkStudySoNumber());
+            Log.i(TAG, "button_6 onClick. pid: " + android.os.Process.myPid());
+            bindService(new Intent(this, MyService.class), new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                    Log.i(TAG, "button_6 onServiceConnected. pid: " + android.os.Process.myPid());
+                    IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(service);
+                    try {
+                        String string = iMyAidlInterface.getString();
+                        Log.i(TAG, "button_6 getString. pid: 1. " + string);
+                    } catch (RemoteException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName name) {
+
+                }
+            }, Context.BIND_AUTO_CREATE);
         }
     }
 }

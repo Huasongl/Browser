@@ -19,7 +19,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "My Application"
+rootProject.name = "Browser"
 include(":app")
 include(":lib")
 include(":nativelib")
