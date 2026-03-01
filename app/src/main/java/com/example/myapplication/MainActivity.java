@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.app.DownloadManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -8,13 +10,17 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebViewClient;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.nativelib.NativeLib;
 
@@ -32,12 +38,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        findViewById(R.id.button_1).setOnClickListener(this);
+               Intent intent = new Intent(this, MainActivity2.class);
+               startActivity(intent);
+        findViewById(R.id.button_1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+        if (View.VISIBLE == findViewById(R.id.button_1).getVisibility()) {
+
+        }
         findViewById(R.id.button_2).setOnClickListener(this);
         findViewById(R.id.button_3).setOnClickListener(this);
         findViewById(R.id.button_4).setOnClickListener(this);
         findViewById(R.id.button_5).setOnClickListener(this);
         findViewById(R.id.button_6).setOnClickListener(this);
+        findViewById(android.R.id.content).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        DownloadManager
+        SurfaceView surfaceView = new SurfaceView(this);
+        surfaceView.getHolder();
+        surfaceView.setVisibility(View.GONE);
+        surfaceView.setVisibility(View.VISIBLE);
+
+        WebChromeClient
+        Fragment fragment = new Fragment();
+        fragment.setRetainInstance(true);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     @Override
