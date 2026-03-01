@@ -2,7 +2,7 @@
 
 #set -e
 if [ "$1" ] ; then
-  ./gbc_aw_aar.sh "$1" || exit
+  ./aw_aar.sh "$1" || exit
 fi;
 
 echo "编译""$1""版本apk" &&
